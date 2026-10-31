@@ -1,0 +1,164 @@
+/*
+ * Sample — the editable CSS theme for this sample book.
+ * Registered by site.options.style in myst.yml.
+ * Edit this source, not generated files under _build/.
+ */
+
+/* 1. Shared design choices. The MyST renderer supplies the page structure. */
+:root {
+  --custom-class-body-font: Georgia, "Times New Roman", serif;
+  --custom-class-heading-font: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --custom-class-radius: 0.8rem;
+  --custom-class-line-height: 1.75;
+
+  /* 2. Light palette: MyST semantic colour variables. */
+  --myst-color-bg: #fbf8f3;
+  --myst-color-bg-secondary: #f2eee7;
+  --myst-color-surface: #eee9e1;
+  --myst-color-surface-hover: #e5ded3;
+  --myst-color-text: #192c3b;
+  --myst-color-text-secondary: #4c5b64;
+  --myst-color-text-tertiary: #63717a;
+  --myst-color-prose-body: #293b47;
+  --myst-color-border: #d8d0c4;
+  --myst-color-border-strong: #b8ad9e;
+  --myst-color-link: #963d26;
+  --myst-color-link-hover: #6f2817;
+  --myst-color-link-underline: #c8886f;
+  --myst-color-primary: #a7442b;
+  --myst-color-primary-hover: #7c301e;
+  --myst-color-active: #963d26;
+  --myst-color-active-bg: #a7442b18;
+  --myst-color-active-surface: #f5e8df;
+  --myst-color-accent-text: #75351f;
+  --myst-color-focus-ring: #a7442b;
+  --myst-color-focus-outline: #dca28d;
+  --myst-color-code: #8b3050;
+
+  --myst-color-info: #287d81;
+  --myst-color-info-bg: #edf6f3;
+  --myst-color-info-text: #1b6669;
+  --myst-color-warning: #a66c10;
+  --myst-color-warning-bg: #fff4da;
+  --myst-color-warning-text: #805009;
+}
+
+/* 3. Dark palette. The theme switches mode by adding the .dark class. */
+.dark {
+  --myst-color-bg: #14212b;
+  --myst-color-bg-secondary: #1b2b36;
+  --myst-color-surface: #213540;
+  --myst-color-surface-hover: #2a424e;
+  --myst-color-text: #f3eee5;
+  --myst-color-text-secondary: #d1d8d9;
+  --myst-color-text-tertiary: #abb8bc;
+  --myst-color-prose-body: #e0e2de;
+  --myst-color-border: #3d535e;
+  --myst-color-border-strong: #647782;
+  --myst-color-link: #f1b094;
+  --myst-color-link-hover: #ffd4bd;
+  --myst-color-link-underline: #a97159;
+  --myst-color-primary: #d88768;
+  --myst-color-primary-hover: #e7a184;
+  --myst-color-active: #f1b094;
+  --myst-color-active-bg: #d8876824;
+  --myst-color-active-surface: #342b2a;
+  --myst-color-accent-text: #f1b094;
+  --myst-color-focus-ring: #f1b094;
+  --myst-color-focus-outline: #d88768;
+  --myst-color-code: #f1b9ce;
+  --myst-color-info: #78c5c2;
+  --myst-color-info-bg: #1b343a;
+  --myst-color-info-text: #a6ded7;
+  --myst-color-warning: #e7b558;
+  --myst-color-warning-bg: #3b3120;
+  --myst-color-warning-text: #f3d18f;
+}
+
+/* 4. Prose. Keep code and KaTeX in their own renderer-provided fonts. */
+.article {
+  font-family: var(--custom-class-body-font);
+}
+
+.article p,
+.article li,
+.article dd {
+  line-height: var(--custom-class-line-height);
+}
+
+.article :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--custom-class-heading-font);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.article h2 {
+  margin-top: 2.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--myst-color-border);
+}
+
+.article blockquote {
+  border-left: 3px solid var(--myst-color-primary);
+  padding-left: 1.2rem;
+  color: var(--myst-color-text-secondary);
+}
+
+.article :is(pre, code, kbd, samp) {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono",
+    monospace;
+}
+
+.article pre {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  border-radius: var(--custom-class-radius);
+}
+
+.article table {
+  font-family: var(--custom-class-heading-font);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.article :is(th, td) {
+  padding: 0.65rem 0.85rem;
+}
+
+/* 5. Classes attached explicitly to specimen content. */
+.custom-class-lead {
+  margin: 1rem 0 1.8rem;
+  padding-left: 1.2rem;
+  border-left: 4px solid var(--myst-color-primary);
+  color: var(--myst-color-text-secondary);
+  font-size: 1.2rem;
+}
+
+.custom-class-card {
+  margin: 1.6rem 0;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--myst-color-border);
+  border-radius: var(--custom-class-radius);
+  background: var(--myst-color-bg-secondary);
+}
+
+.custom-class-card > :first-child {
+  margin-top: 0;
+}
+
+.custom-class-card > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .custom-class-lead {
+    font-size: 1.05rem;
+    padding-left: 0.9rem;
+  }
+
+  .custom-class-card {
+    padding: 1rem;
+  }
+}
+

@@ -1,0 +1,26 @@
+version: 1
+
+project:
+  title: Sample
+  description: A small Jupyter Book 2 project for developing a custom CSS theme.
+  authors:
+    - name: Theme developer
+  copyright: '2026'
+  exclude:
+    - theme/README.md
+    - _build/**
+  toc:
+    - file: content/index.md
+    - file: content/markdownpage.md
+    - file: content/notebook.ipynb
+
+site:
+  template: book-theme
+  options:
+    style: theme/custom.css
+    logo: assets/logo.svg
+    logo_dark: assets/logo-dark.svg
+    favicon: assets/favicon.svg
+    logo_text: Sample
+    hide_authors: true
+

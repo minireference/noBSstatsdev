@@ -1,0 +1,5 @@
+-r requirements.txt
+# Optional notebook editor; not needed for the website preview or HTML build.
+jupyterlab==4.5.6
+ipykernel==7.4.0
+
