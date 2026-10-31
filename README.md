@@ -1,9 +1,12 @@
 # noBSstatsdev
 
 A small **Jupyter Book 2** workspace for developing several versions of a
-book's content and CSS theme side by side. Each direct subfolder is an
-independent book with its own `myst.yml`, content, assets, theme, and build.
+book's content and CSS theme side by side. Each book subfolder is an
+independent project with its own `myst.yml`, content, assets, theme, and build.
 The Python environment and helper scripts are shared at the repository root.
+
+The separate `homepage/` folder is a static landing page built from Jinja
+templates and one stylesheet, independently of Jupyter Book.
 
 The included `sample/` book has three pages: an index, a Markdown kitchen
 sink, and an executed notebook with text, a DataFrame, two Seaborn plots,
@@ -20,6 +23,7 @@ noBSstatsdev/
   requirements-dev.txt
   scripts/
     build.py
+    buildhomepage.py
     check_build.py
     deploy.py
   credentials/
@@ -37,6 +41,17 @@ noBSstatsdev/
       markdownpage.md
       notebook.ipynb
     _build/                  # generated; ignored by Git
+  homepage/
+    templates/
+      index.html
+      header.html
+      hersection.html
+      books.html
+      footer.html
+    homepageassets/
+      styles.css
+    README.md
+    dist/                    # generated; ignored by Git
 ```
 
 Place your own keys in `credentials/`. No keys or generated builds are
@@ -102,8 +117,9 @@ Confirm the builder version:
 jupyter book --version
 ```
 
-The requirements pin Jupyter Book **2.1.7**, Paramiko **5.1.0**, and the
-Python packages used by the specimens. MyST downloads `book-theme` separately: these pins do
+The requirements pin Jupyter Book **2.1.7**, Paramiko **5.1.0**, Jinja2
+**3.1.6**, and the Python packages used by the specimens.
+MyST downloads `book-theme` separately: these pins do
 not lock every renderer/JavaScript dependency. The first preview or build
 needs internet access to obtain the renderer and its dependencies.
 
@@ -266,7 +282,28 @@ lives in `design-v2/_build/html/` and its published prefix is
 hard-code a version's `BASE_URL` in `myst.yml`. No new environment or
 script edits are needed for each version.
 
-## 7. Configure Python deployment
+## 7. Build the Jinja homepage
+
+From the repository root, with the Python environment activated:
+
+```bash
+python -m pip install -r requirements.txt
+python scripts/buildhomepage.py homepage
+python -m http.server 8000 --directory homepage/dist
+```
+
+Open `http://localhost:8000/`. Edit the fragments in `homepage/templates/`
+and the single stylesheet `homepage/homepageassets/styles.css`. Rebuild after edits
+and refresh the browser. The script combines `index.html`, `header.html`,
+`hersection.html`, `books.html`, and `footer.html`, then copies the assets.
+Output lives in `homepage/dist/`. Missing template variables are errors.
+
+All asset URLs are relative, so the same output works at `/` or
+`/homepage/`. This build needs Python and Jinja; it has no Jupyter Book or
+Node.js build step. See `homepage/README.md` for details and the command to
+copy this folder to `homepage-v2/` for another design iteration.
+
+## 8. Configure Python deployment
 
 Open `scripts/deploy.py` and set the constants at the top once for this
 project:
@@ -308,9 +345,23 @@ All authentication and uploads use Paramiko's Python APIs. The script
 uses no system SSH/SCP programs and executes no remote shell commands.
 There is no deployment JSON file or connection-settings command line.
 
-## 8. Deploy a design version
+## 9. Deploy a design version
 
-From the repository root, build and deploy the same folder name:
+`deploy.py <folder>` selects `<folder>/dist/` if that directory exists;
+otherwise it selects `<folder>/_build/html/`. The selected directory must
+contain `index.html`. An existing empty `dist/` produces an error.
+
+For the Jinja homepage:
+
+```bash
+python scripts/buildhomepage.py homepage
+python scripts/deploy.py homepage
+```
+
+This uploads `homepage/dist/` into `WEBROOT/homepage/`.
+
+For a Jupyter Book, build and deploy the same folder name from the repository
+root:
 
 ```bash
 python scripts/build.py sample
@@ -346,5 +397,6 @@ On macOS/Linux you can also run `./scripts/build.py sample` and
 - [Theme colours](https://myst-theme.netlify.app/theming/)
 - [Colour picker](https://myst-theme.netlify.app/color-picker/)
 - [Static hosting and BASE_URL](https://mystmd.org/guide/deployment)
+- [Jinja template API](https://jinja.palletsprojects.com/en/stable/api/)
 - [Paramiko Python SSH client](https://docs.paramiko.org/en/stable/api/client.html)
 - [Paramiko SFTP API](https://docs.paramiko.org/en/stable/api/sftp.html)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Upload <folder>/_build/html/ to WEBROOT/<folder>/ using Python SFTP."""
+"""Upload <folder>/dist/ or <folder>/_build/html/ to WEBROOT/<folder>/."""
 
 import argparse
 import getpass
@@ -60,16 +60,27 @@ def upload_directory(sftp, local, remote):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("folder", help="Book folder, for example: sample")
+    parser.add_argument("folder", help="Site folder, for example: sample or homepage")
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", args.folder):
-        parser.error("Use a single folder name such as sample or design-v2.")
+        parser.error("Use a single folder name such as sample or homepage.")
     if not posixpath.isabs(WEBROOT):
         parser.error("WEBROOT must be an absolute server path.")
 
-    local = os.path.join(ROOT, args.folder, "_build", "html")
+    directory = os.path.join(ROOT, args.folder)
+    dist = os.path.join(directory, "dist")
+    if os.path.isdir(dist):
+        local = dist
+    else:
+        local = os.path.join(directory, "_build", "html")
     if not os.path.isfile(os.path.join(local, "index.html")):
-        parser.error("Build first: python scripts/build.py " + args.folder)
+        builder = "build.py"
+        if os.path.isdir(os.path.join(directory, "templates")):
+            builder = "buildhomepage.py"
+        parser.error(
+            "No index.html in " + local + ". Build first: python scripts/"
+            + builder + " " + args.folder
+        )
     remote = posixpath.join(WEBROOT, args.folder)
     key_file = os.path.join(ROOT, SSH_PRIVATE_KEY)
     known_hosts = os.path.join(ROOT, SSH_KNOWN_HOSTS)
@@ -94,6 +105,7 @@ def main():
             )
             with client.open_sftp() as sftp:
                 sftp.get_channel().settimeout(60)
+                print("Uploading:", local)
                 upload_directory(sftp, local, remote)
         print("Deployed to", remote + "/")
     except (OSError, ValueError, TypeError, EOFError, paramiko.SSHException) as error:
