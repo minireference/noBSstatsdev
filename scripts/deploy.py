@@ -11,10 +11,10 @@ import paramiko
 
 
 # Project settings: edit these once for your server.
-SSH_HOST = "your-server.example.com"
-SSH_USER = "your-ssh-user"
+SSH_HOST = "dev.noBSstats.com"
+SSH_USER = "admin"
 SSH_PORT = 22
-SSH_PRIVATE_KEY = "credentials/id_rsa"  # Private key, not id_rsa.pub.
+SSH_PRIVATE_KEY = "credentials/admin_key"  # Private key, not id_rsa.pub.
 SSH_KNOWN_HOSTS = "credentials/known_hosts"
 WEBROOT = "/var/www/html"
 

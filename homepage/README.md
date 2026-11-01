@@ -1,24 +1,29 @@
-# Jinja homepage
+# Homepage
 
-This folder is an independent static landing page. The shared
-`scripts/buildhomepage.py` script renders the templates and copies assets.
+This folder contains an started code for a static homeapge for the site.
+Use the script `scripts/buildhomepage.py` to build the page
+from the page components in the `templates/` directory,
+and outputs the build HTML + assets to the `dist/` directory.
+
 
 ```text
 homepage/
   templates/
-    index.html
+    index.html           # main file
     header.html
-    hersection.html
+    herosection.html
     books.html
     footer.html
   homepageassets/
     styles.css
-  dist/                  # generated; ignored by Git
+  dist/                  # build directory; ignored by Git
 ```
 
-`templates/index.html` includes the four HTML fragments. Edit each fragment
-independently. All styles are in `homepageassets/styles.css`. The `hersection.html`
-filename matches the supplied folder plan.
+THe 
+- The main file is `templates/index.html` and it includes other HTML fragments
+- You can edit each fragment independently.
+- Style styles are in `homepageassets/styles.css`.
+
 
 ## Build and preview
 
@@ -42,14 +47,10 @@ characters in template variables are escaped automatically.
 
 The output is `homepage/dist/index.html` and `homepage/dist/assets/`.
 The builder overwrites matching output files and copies nested assets.
-Remove `dist/` before rebuilding if you want to discard obsolete output
-files. The build script does not modify the source templates or assets.
+Jinja and Python are needed during the build.
 
-Relative asset links work when the site is served either at `/` or under
-`/homepage/`. No `BASE_URL`, Node.js, or Jupyter Book step is needed for
-this homepage build. Jinja and Python are needed only during the build.
 
-## Start another version
+## Start another version of the homepage
 
 Copy the source folder from the repository root, skipping generated output:
 
@@ -59,11 +60,12 @@ python scripts/buildhomepage.py homepage-v2
 python -m http.server 8000 --directory homepage-v2/dist
 ```
 
-The new directory must not already exist. Edit its templates and stylesheet
-independently. Stop another preview on port 8000 before starting this one,
+Edit its templates and stylesheet independently.
+Stop another preview on port 8000 before starting this one,
 or choose a different port.
 
-## Deploy
+
+## Deploy to web server
 
 Set the SSH constants at the top of `scripts/deploy.py`, then run:
 
@@ -71,11 +73,8 @@ Set the SSH constants at the top of `scripts/deploy.py`, then run:
 python scripts/deploy.py homepage
 ```
 
-The deployment script prefers `homepage/dist/` when that directory exists.
-Otherwise it selects `homepage/_build/html/`. The selected output must have
-an `index.html`; an empty `dist/` produces an error.
-
-With the default `WEBROOT`, output is uploaded into
-`/var/www/html/homepage/`. Only the generated files are deployed. The web
-server needs no Python or Jinja installation. The same command with
-`homepage-v2` uploads that version into `/var/www/html/homepage-v2/`.
+The deployment script will take the contents of `homepage/dist/`
+and upload it to `/var/www/html/homepage/`,
+which corresponds to the URL: https://dev.nobsstats.com/homepage/ 
+The same command with `homepage-v2` uploads that version to `/var/www/html/homepage-v2/`
+which can be viweed online at:  https://dev.nobsstats.com/homepage-v2/ .

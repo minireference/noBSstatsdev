@@ -45,9 +45,8 @@ noBSstatsdev/
     templates/
       index.html
       header.html
-      hersection.html
-      books.html
       footer.html
+      ...
     homepageassets/
       styles.css
     README.md
@@ -295,7 +294,7 @@ python -m http.server 8000 --directory homepage/dist
 Open `http://localhost:8000/`. Edit the fragments in `homepage/templates/`
 and the single stylesheet `homepage/homepageassets/styles.css`. Rebuild after edits
 and refresh the browser. The script combines `index.html`, `header.html`,
-`hersection.html`, `books.html`, and `footer.html`, then copies the assets.
+`herosection.html`, `books.html`, and `footer.html`, then copies the assets.
 Output lives in `homepage/dist/`. Missing template variables are errors.
 
 All asset URLs are relative, so the same output works at `/` or
