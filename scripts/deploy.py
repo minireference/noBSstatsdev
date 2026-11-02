@@ -6,6 +6,7 @@ import getpass
 import os
 import posixpath
 import re
+from urllib.parse import urljoin
 
 import paramiko
 
@@ -19,7 +20,9 @@ SSH_KNOWN_HOSTS = "credentials/known_hosts"
 WEBROOT = "/var/www/html"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WEBSITE_ROOT_URL = "https://dev.noBSstats.com/"
 
+VERBOSE = False
 
 class ConfirmHostKey(paramiko.MissingHostKeyPolicy):
     """Confirm and save a new server key, as an SSH client normally does."""
@@ -45,17 +48,18 @@ def make_directory(sftp, path):
         sftp.mkdir(path, mode=0o755)
 
 
-def upload_directory(sftp, local, remote):
+def upload_directory(sftp, local, remote, deploy_type):
     """Copy every file, including dotfiles and nested directories."""
     make_directory(sftp, remote)
     for name in sorted(os.listdir(local)):
         source = os.path.join(local, name)
         target = posixpath.join(remote, name)
         if os.path.isdir(source):
-            upload_directory(sftp, source, target)
+            upload_directory(sftp, source, target, deploy_type)
         else:
             sftp.put(source, target)
-            print("Uploaded:", target)
+            if deploy_type == "homepage" or VERBOSE:
+                print("Uploaded:", target)
 
 
 def main():
@@ -67,29 +71,49 @@ def main():
     if not posixpath.isabs(WEBROOT):
         parser.error("WEBROOT must be an absolute server path.")
 
+
     directory = os.path.join(ROOT, args.folder)
-    dist = os.path.join(directory, "dist")
-    if os.path.isdir(dist):
-        local = dist
-    else:
+
+
+    # Detmine what kind of deploy this is: homepage or styles
+    # and set `local` directory whose contents we want to deploy
+    homepageassets_dir = os.path.join(directory, "homepageassets")
+    myst_file = os.path.join(directory, "myst.yml")
+    deploy_type = None
+    if os.path.isdir(homepageassets_dir):
+        deploy_type = "homepage"
+        local = os.path.join(directory, "dist")
+        builder = "buildhomepage.py"
+    elif os.path.isfile(myst_file):
+        deploy_type = "styles"
         local = os.path.join(directory, "_build", "html")
-    if not os.path.isfile(os.path.join(local, "index.html")):
         builder = "build.py"
-        if os.path.isdir(os.path.join(directory, "templates")):
-            builder = "buildhomepage.py"
+    else:
+        raise ValueError("Didn't find neither hoempageassets/ nor myst.yml so qitting...")
+
+    # 
+    print("Deploy type", deploy_type)
+
+    # Check that the local folder we want to deploy contains an index.html
+    if not os.path.isfile(os.path.join(local, "index.html")):
         parser.error(
             "No index.html in " + local + ". Build first: python scripts/"
             + builder + " " + args.folder
         )
+
+    # Destination where we're uploaing to on the web server
     remote = posixpath.join(WEBROOT, args.folder)
+
+    # Credentials we'll use to connect to the web server
     key_file = os.path.join(ROOT, SSH_PRIVATE_KEY)
     known_hosts = os.path.join(ROOT, SSH_KNOWN_HOSTS)
 
     try:
-        # from_path detects RSA, Ed25519, or ECDSA private keys.
         try:
+            # This assumes ssh key is in either RSA, Ed25519, or ECDSA format
             key = paramiko.PKey.from_path(key_file)
         except TypeError:
+            # If ssh private key is password-protected, prompt the user for the password
             password = getpass.getpass("Private-key passphrase: ")
             key = paramiko.PKey.from_path(key_file, password=password.encode("utf-8"))
 
@@ -103,11 +127,16 @@ def main():
                 allow_agent=False, look_for_keys=False, timeout=15,
                 banner_timeout=15, auth_timeout=30,
             )
+            print(f"Starting deploy {local} to https://dev.noBSstats.com/{args.folder}/")
+            if deploy_type == "styles":
+                print("We're uploading thousands of tiny files so upload might take a few minutes.")
             with client.open_sftp() as sftp:
                 sftp.get_channel().settimeout(60)
                 print("Uploading:", local)
-                upload_directory(sftp, local, remote)
+                upload_directory(sftp, local, remote, deploy_type)
         print("Deployed to", remote + "/")
+        print("See ", urljoin(WEBSITE_ROOT_URL, args.folder + "/"), "to view the live version.")
+
     except (OSError, ValueError, TypeError, EOFError, paramiko.SSHException) as error:
         parser.exit(1, "Error: " + (str(error) or type(error).__name__) + "\n")
     except KeyboardInterrupt:
