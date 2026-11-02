@@ -12,11 +12,8 @@ node_modules/
 # SSH keys and saved server host keys
 credentials/
 
-# OPTIONALLY ignote homepae deliverables build directories
+# OPTIONALLY ignote homepage deliverables build directories
 # */dist/
-
-# OPTIONALLY styles deliverables build directories
-# */_public/html
 
 
 

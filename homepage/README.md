@@ -41,13 +41,14 @@ python -m http.server 8000 --directory homepage/dist
 Open `http://localhost:8000/`. Stop the preview with Ctrl+C. After editing,
 rerun the build in another terminal and refresh the browser.
 
-`SITE_TITLE` at the top of `buildhomepage.py` supplies `site_title` to the
-templates. Missing template variables produce a build error. HTML-sensitive
-characters in template variables are escaped automatically.
+The value of the variable `site_title` defiend in context dict
+in  `buildhomepage.py` supplies `site_title` variable in templates.
+Missing template variables are set to produce build errors. 
 
 The output is `homepage/dist/index.html` and `homepage/dist/assets/`.
 The builder overwrites matching output files and copies nested assets.
-Jinja and Python are needed during the build.
+Jin
+a and Python are needed during the build.
 
 
 

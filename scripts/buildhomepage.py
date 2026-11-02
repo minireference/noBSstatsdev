@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build the homepage design: <folder>/templates/ + <folder>/homepageassets/  -->  <folder/dist/
+Build the homepage design: <folder>/templates/ + <folder>/homepageassets/  -->  <folder>/dist/
 - Run `./scripts/buildhomepage.py <folder>` to build homepage design in <folder>.
 - Run `./scripts/buildhomepage.py <folder> --serve` to run a livereload dev server
   that watches the sources and refresh the browser on change.
@@ -40,7 +40,7 @@ def build_homepage(directory):
 
     # These are variables you pass in when building the homepage
     context = {
-        "site_title": "No Bullshit Guide to Statisics"
+        "site_title": "No Bullshit Guide to Statistics"
     }
     # IDEAS:
     #   - you could add the text of user reviews here

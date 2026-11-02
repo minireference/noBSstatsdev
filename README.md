@@ -1,7 +1,7 @@
 # noBSstatsdev
 
 This is the code repo for the Group 882 WE Accelerate internship project,
-which is to create website for the book: **No Bullshit Guide to Statistics**.
+which is to create a website for the book: **No Bullshit Guide to Statistics**.
 The repo contains sample content (`homepage` and `sample`) and scripts (`scripts`)
 to facilitate the delivery of the two deliverables for the project:
 
@@ -22,10 +22,10 @@ The folder `homepage/` contains starter code for creating a static
 landing page that will live at https://noBSstats.com/ in prod.
 
 The sample code uses the Jinja templates to build `homepage/dist/index.html`
-from the template `homepage/template/index.html`, which in turn includes
-the HTML fragments taken from `homepage/template/`.
+from the template `homepage/templates/index.html`, which in turn includes
+the HTML fragments taken from `homepage/templates/`.
 The source stylesheet file is `homepage/homepageassets/styles.css`
-gets copied top `homepage/dest/homepageassets/styles.css`
+gets copied to `homepage/dist/homepageassets/styles.css`
 along with any other files in the `homepageassets/` folder.
 
 
@@ -44,7 +44,7 @@ along with any other files in the `homepageassets/` folder.
 
 
 NOTE: You have complete freedom about the choice of tech stack,
-build scripts, and CSS framework you wan to use to create the homepage.
+build scripts, and CSS framework you want to use to create the homepage.
 The sample code provided in `homepage/` is just one way to do things,
 but feel free to ignore everything I have provided, and use another approach.
 As long as you have some way to put the required static `index.html` and
@@ -72,7 +72,7 @@ The folder `sample/` contains a sample **Jupyter Book** project with custom styl
       index.md
       markdownpage.md
       notebook.ipynb
-    _build/                  # generated; ignored by Git
+    _build/
 ```
 
 Each styles subfolder is independent, with its own `myst.yml` and `theme/custom.css`.
@@ -170,18 +170,6 @@ python -m pip install -r requirements.txt
 If activation is blocked, call the environment's executables directly,
 for example `.\.venv\Scripts\python.exe scripts/build.py sample`.
 
-Confirm the builder version:
-
-```bash
-jupyter book --version
-```
-
-The requirements pin Jupyter Book **2.1.7**, Paramiko **5.1.0**, Jinja2
-**3.1.6**, and the Python packages used by the specimens.
-MyST downloads `book-theme` separately: these pins do
-not lock every renderer/JavaScript dependency. The first preview or build
-needs internet access to obtain the renderer and its dependencies.
-
 Activate the environment again whenever you open a new terminal.
 
 
@@ -213,11 +201,10 @@ python scripts/buildhomepage.py homepage
 python -m http.server 8000 --directory homepage/dist
 ```
 
-The script builds the jupyter book in folder `homepage/` then serves
-the generated HTML locally at `http://127.0.0.1:8000/`.
+The script builds the homepage in folder `homepage/` then
+the second command serves the generated HTML locally at `http://127.0.0.1:8000/`.
 Open `http://localhost:8000/` in your browser.
 To stop the sever, use `Ctrl+C`.
-
 
 See `homepage/README.md` for more info.
 
