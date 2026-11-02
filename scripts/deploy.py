@@ -17,10 +17,12 @@ SSH_USER = "admin"
 SSH_PORT = 22
 SSH_PRIVATE_KEY = "credentials/admin_key"  # Private key, not id_rsa.pub.
 SSH_KNOWN_HOSTS = "credentials/known_hosts"
+
 WEBROOT = "/var/www/html"
+WEBROOT_URL = "https://dev.noBSstats.com/"
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WEBSITE_ROOT_URL = "https://dev.noBSstats.com/"
+
 
 VERBOSE = False
 
@@ -135,7 +137,7 @@ def main():
                 print("Uploading:", local)
                 upload_directory(sftp, local, remote, deploy_type)
         print("Deployed to", remote + "/")
-        print("See ", urljoin(WEBSITE_ROOT_URL, args.folder + "/"), "to view the live version.")
+        print("See ", urljoin(WEBROOT_URL, args.folder + "/"), "to view the live version.")
 
     except (OSError, ValueError, TypeError, EOFError, paramiko.SSHException) as error:
         parser.exit(1, "Error: " + (str(error) or type(error).__name__) + "\n")
