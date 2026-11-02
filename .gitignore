@@ -9,6 +9,14 @@ __pycache__/
 Thumbs.db
 node_modules/
 
-# Local SSH keys and saved server host keys.
+# SSH keys and saved server host keys
 credentials/
+
+# OPTIONALLY ignote homepae deliverables build directories
+# */dist/
+
+# OPTIONALLY styles deliverables build directories
+# */_public/html
+
+
 
