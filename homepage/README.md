@@ -1,4 +1,4 @@
-# Homepage
+# Homepage sample
 
 This folder contains an started code for a static homeapge for the site.
 Use the script `scripts/buildhomepage.py` to build the page
@@ -25,6 +25,7 @@ THe
 - Style styles are in `homepageassets/styles.css`.
 
 
+
 ## Build and preview
 
 From the repository root, activate your Python environment and install the
@@ -33,7 +34,6 @@ install Jinja with `python -m pip install Jinja2` and add it to the root
 `requirements.txt`. Add `dist/` to the root `.gitignore` as well.
 
 ```bash
-python -m pip install -r requirements.txt
 python scripts/buildhomepage.py homepage
 python -m http.server 8000 --directory homepage/dist
 ```
@@ -48,6 +48,8 @@ characters in template variables are escaped automatically.
 The output is `homepage/dist/index.html` and `homepage/dist/assets/`.
 The builder overwrites matching output files and copies nested assets.
 Jinja and Python are needed during the build.
+
+
 
 
 ## Start another version of the homepage
@@ -65,6 +67,8 @@ Stop another preview on port 8000 before starting this one,
 or choose a different port.
 
 
+
+
 ## Deploy to web server
 
 Set the SSH constants at the top of `scripts/deploy.py`, then run:
@@ -75,6 +79,9 @@ python scripts/deploy.py homepage
 
 The deployment script will take the contents of `homepage/dist/`
 and upload it to `/var/www/html/homepage/`,
-which corresponds to the URL: https://dev.nobsstats.com/homepage/ 
-The same command with `homepage-v2` uploads that version to `/var/www/html/homepage-v2/`
+which corresponds to the URL: https://dev.noBSstats.com/homepage/ 
+
+Use `scripts/deploy.py` to deploy any other folder.
+For example, running `./scripts/deploy.py homepage-v2`
+to upload the folder `homepage-v2` to `/var/www/html/homepage-v2/`
 which can be viweed online at:  https://dev.nobsstats.com/homepage-v2/ .
