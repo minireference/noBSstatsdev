@@ -21,7 +21,6 @@ from jinja2 import (
 )
 
 
-SITE_TITLE = "Minireference"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 

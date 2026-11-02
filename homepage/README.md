@@ -16,7 +16,7 @@ homepage/
     footer.html
   homepageassets/
     styles.css
-  dist/                  # build directory; ignored by Git
+  dist/                  # build directory
 ```
 
 THe 
@@ -45,10 +45,22 @@ The value of the variable `site_title` defiend in context dict
 in  `buildhomepage.py` supplies `site_title` variable in templates.
 Missing template variables are set to produce build errors. 
 
-The output is `homepage/dist/index.html` and `homepage/dist/assets/`.
+The output is `homepage/dist/index.html` and `homepage/dist/homepageassets/`.
 The builder overwrites matching output files and copies nested assets.
-Jin
-a and Python are needed during the build.
+
+
+
+## Dev server with live reload
+
+To run a live-reloading dev server, use the command:
+
+```bash
+python ./scripts/buildhomepage.py homepage --serve
+```
+
+This will watches the sources and refresh the browser on change.
+
+
 
 
 
@@ -60,12 +72,10 @@ Copy the source folder from the repository root, skipping generated output:
 ```bash
 python -c "import shutil; shutil.copytree('homepage', 'homepage-v2', ignore=shutil.ignore_patterns('dist'))"
 python scripts/buildhomepage.py homepage-v2
-python -m http.server 8000 --directory homepage-v2/dist
+python ./scripts/buildhomepage.py homepage-v2 --serve
 ```
 
 Edit its templates and stylesheet independently.
-Stop another preview on port 8000 before starting this one,
-or choose a different port.
 
 
 

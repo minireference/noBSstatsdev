@@ -80,10 +80,10 @@ def main():
     # Detmine what kind of deploy this is: homepage or styles
     # and set `local` directory whose contents we want to deploy
     homepageassets_dir = os.path.join(directory, "homepageassets")
-    dest_index_file = os.path.join(directory, "dest", "index.html")
+    dist_index_file = os.path.join(directory, "dist", "index.html")
     myst_file = os.path.join(directory, "myst.yml")
     deploy_type = None
-    if os.path.isdir(homepageassets_dir) or os.path.isfile(dest_index_file):
+    if os.path.isdir(homepageassets_dir) or os.path.isfile(dist_index_file):
         deploy_type = "homepage"
         local = os.path.join(directory, "dist")
         builder = "buildhomepage.py"
