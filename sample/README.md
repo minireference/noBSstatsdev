@@ -119,3 +119,13 @@ python scripts/deploy.py <folder>
 This make take up to five minutes because there are thousands of files.
 View the restuls at `https://dev.noBSstats.com/<folder>/`.
 
+
+
+
+## Links
+
+- [MyST styles and CSS classes](https://mystmd.org/guide/website-style)
+- [Theme colours](https://myst-theme.netlify.app/theming/)
+- [Colour picker](https://myst-theme.netlify.app/color-picker/)
+- [Jupyter Book 2](https://jupyterbook.org/stable/)
+- [Static hosting and BASE_URL](https://mystmd.org/guide/deployment)

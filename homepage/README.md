@@ -85,3 +85,11 @@ Use `scripts/deploy.py` to deploy any other folder.
 For example, running `./scripts/deploy.py homepage-v2`
 to upload the folder `homepage-v2` to `/var/www/html/homepage-v2/`
 which can be viweed online at:  https://dev.nobsstats.com/homepage-v2/ .
+
+
+
+
+## Links
+
+
+- [Jinja template API](https://jinja.palletsprojects.com/en/stable/api/)

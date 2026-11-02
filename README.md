@@ -12,7 +12,7 @@ to facilitate the delivery of the two deliverables for the project:
 
 ## Sample content
 
-The folders  `homepage` and `sample` in the repo serve as the definitions of the "shape"
+The folders `homepage` and `sample` in the repo serve as the definitions of the "shape"
 of the deliverables D1 and D2 I expect by the end of the project.
 
 
@@ -95,7 +95,7 @@ The folder `scripts/` contains shared scripts to build `homepage` and `styles` f
     deploy.py
 ```
 
-The script `deploy.py` uploads the local `<folder>` to the online server at the URL https://dev.noBSstats.com/`<folder>`/
+The script `deploy.py` uploads the local `<folder>` to the online server at the URL `https://dev.noBSstats.com/<folder>/`
 
 
 
@@ -200,7 +200,7 @@ of a the homepage noBSstats.com and the styles for the content pages.
 - Each folder is completely independent, but easily sharable:
   - git add, commit, and push your local folder `homepage-demo` to the main repo 
   - git add, commit, and push local folder `homepage-demo` to a different brach, then open a pull request to the main branch
-  - build your local folder `homepage-demo` and upload it to https://dev.noBSstats.com/`<folder>`/, then share this URL
+  - build your local folder `homepage-demo` and upload it to `https://dev.noBSstats.com/<folder>/`, then share this URL
 
 
 
@@ -262,7 +262,7 @@ python scripts/deploy.py <folder>
 ```
 
 This will upload the HTML build content from the local `<folder>`
-so that it gets served online at the public URL https://dev.noBSstats.com/`<folder>`/
+so that it gets served online at the public URL `https://dev.noBSstats.com/<folder>/`
 
 
 The following constants must be set at the top of the script:
@@ -303,15 +303,12 @@ is the same, so you know you're connecting to the same server as on the first co
 
 
 
+## Links
 
+- Production website: https://noBSstats.com/
+- Production website source repo: https://github.com/minireference/noBSstats
+- Dev wesbite: https://dev.noBSstats.com/
+  - See https://dev.noBSstats.com/homepage/ for sample homepage
+  - See https://dev.noBSstats.com/sample/ for sample styles
+- Dev website source repo: https://github.com/minireference/noBSstatsdev
 
-## Documentation
-
-- [Jupyter Book 2](https://jupyterbook.org/stable/)
-- [MyST styles and CSS classes](https://mystmd.org/guide/website-style)
-- [Theme colours](https://myst-theme.netlify.app/theming/)
-- [Colour picker](https://myst-theme.netlify.app/color-picker/)
-- [Static hosting and BASE_URL](https://mystmd.org/guide/deployment)
-- [Jinja template API](https://jinja.palletsprojects.com/en/stable/api/)
-- [Paramiko Python SSH client](https://docs.paramiko.org/en/stable/api/client.html)
-- [Paramiko SFTP API](https://docs.paramiko.org/en/stable/api/sftp.html)
