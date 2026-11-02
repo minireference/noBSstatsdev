@@ -1,4 +1,15 @@
-# Tested direct dependencies. Python 3.12 is recommended.
+# Python Library dependencies.
+# Python 3.12 recommended
+
+# To build homepage folders (D1)
+# run the script ./scripts/buildhomepage.py <folder>
+# Open the file <folder>/dist/index.html to view the result
+Jinja2==3.1.6
+livereload==2.7.1
+
+# To build the markdownpages and notebook sstyling projects (D2)
+# run the script ./script/build.py <folder>
+# Run the command `python -m http.server 8000 --directory <folder>/_build/html` to view the result
 jupyter-book==2.1.7
 nbformat==5.11.1
 numpy==2.3.5
@@ -7,5 +18,6 @@ pandas==2.2.3
 matplotlib==3.10.8
 seaborn==0.13.2
 
+# Needed for deploy pages to the web server
+# run ./scripts/deploy.py <folder> to delploy contents to dev.noBSstats.com/<folder>/
 paramiko==5.1.0
-Jinja2==3.1.6
