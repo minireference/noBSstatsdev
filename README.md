@@ -54,7 +54,7 @@ js/css/img assets in `homepageassets/` in the directory `<folder>/dist/`,
 we good.
 
 
-The idea is that you will develop different version of the homepage in
+The idea is that you will develop different versions of the homepage in
 separate folders, e.g., `homepage-v2`,  `homepage-v3`, etc., until we get to  `homepage-final`.
 
 
@@ -80,7 +80,7 @@ The folder `sample/` contains a sample **Jupyter Book** project with custom styl
 Each styles subfolder is independent, with its own `myst.yml` and `theme/custom.css`.
 The idea is that you will create multiple copies of this book folder to work on the styles,
 e.g. `styles-v1`,  `styles-v2`, `styles-v3`, etc., until we get to  `styles-final`.
-The markdown file and notebook in `content/` and images `assets/` can stay the same
+The markdown file and notebook in `content/` and images in `assets/` can stay the same
 across different styles versions, but feel free to modify the files in `content/` as you wish.
 
 
@@ -183,13 +183,13 @@ Activate the environment again whenever you open a new terminal.
 ## Dev workflow
 
 We'll use this code repo as a shared workspace for developing several versions
-of a the homepage noBSstats.com and the styles for the content pages.
+of the homepage noBSstats.com and the styles for the content pages.
 - Use subfolders `<folder>` to store different version of the deliverables
   e.g. `homepage-v2`,  `homepage-v3`, etc., until  `homepage-final`,
   and  `styles-v1`,  `styles-v2`, `styles-v3`, until  `styles-final`.
 - Each folder is completely independent, but easily sharable:
   - git add, commit, and push your local folder `homepage-demo` to the main repo 
-  - git add, commit, and push local folder `homepage-demo` to a different brach, then open a pull request to the main branch
+  - git add, commit, and push local folder `homepage-demo` to a different branch, then open a pull request to the main branch
   - build your local folder `homepage-demo` and upload it to `https://dev.noBSstats.com/<folder>/`, then share this URL
 
 
@@ -206,7 +206,7 @@ python -m http.server 8000 --directory homepage/dist
 The script builds the homepage in folder `homepage/` then
 the second command serves the generated HTML locally at `http://127.0.0.1:8000/`.
 Open `http://localhost:8000/` in your browser.
-To stop the sever, use `Ctrl+C`.
+To stop the server, use `Ctrl+C`.
 
 See `homepage/README.md` for more info.
 
@@ -228,7 +228,7 @@ This script builds the jupyter book in folder `sample/` and outputs
 the static site to `sample/_build/html/`,
 serves the generated HTML locally at `http://127.0.0.1:8000/sample/`.
 Open `http://127.0.0.1:8000/sample/` in your browser.
-To stop the sever, use `Ctrl+C`.
+To stop the server, use `Ctrl+C`.
 
 See `sample/README.md` for more info.
 
@@ -277,9 +277,9 @@ to use the private key `credentials/ivan_key` for SSH authentication to the serv
 
 
 Note: for SSH key authentication to work, the contents of `credentials/ivan_key.pub`
-must appear in the file `/home/admin/.ssh/authorized_keys` on the the remote server.
+must appear in the file `/home/admin/.ssh/authorized_keys` on the remote server.
 On the first connection to an unknown server, the script will ask you to type `yes`
-to the server key to `credentials/known_hosts`. Subsequent runs check the server key
+to save the server key to `credentials/known_hosts`. Subsequent runs check the server key
 is the same, so you know you're connecting to the same server as on the first connection.
  
 

@@ -1,9 +1,9 @@
 # Homepage sample
 
-This folder contains an started code for a static homeapge for the site.
+This folder contains an starter code for a static homepage for the site.
 Use the script `scripts/buildhomepage.py` to build the page
 from the page components in the `templates/` directory,
-and outputs the build HTML + assets to the `dist/` directory.
+and outputs the built HTML + assets to the `dist/` directory.
 
 
 ```text
@@ -19,10 +19,10 @@ homepage/
   dist/                  # build directory
 ```
 
-THe 
+
 - The main file is `templates/index.html` and it includes other HTML fragments
 - You can edit each fragment independently.
-- Style styles are in `homepageassets/styles.css`.
+- Stylesheet is in `homepageassets/styles.css`.
 
 
 
@@ -93,9 +93,9 @@ and upload it to `/var/www/html/homepage/`,
 which corresponds to the URL: https://dev.noBSstats.com/homepage/ 
 
 Use `scripts/deploy.py` to deploy any other folder.
-For example, running `./scripts/deploy.py homepage-v2`
+For example, run `./scripts/deploy.py homepage-v2`
 to upload the folder `homepage-v2` to `/var/www/html/homepage-v2/`
-which can be viweed online at:  https://dev.nobsstats.com/homepage-v2/ .
+which can be viewed online at:  https://dev.nobsstats.com/homepage-v2/ .
 
 
 
