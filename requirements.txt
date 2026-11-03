@@ -7,16 +7,6 @@
 Jinja2==3.1.6
 livereload==2.7.1
 
-# To build the markdownpages and notebook sstyling projects (D2)
-# run the script    ./scripts/build.py <folder>
-# or altenratively  ./scripts/build.py <folder> --serve 
-jupyter-book==2.1.7
-nbformat==5.11.1
-numpy==2.3.5
-scipy==1.17.0
-pandas==2.2.3
-matplotlib==3.10.8
-seaborn==0.13.2
 
 # Needed for deploy pages to the web server
 # run ./scripts/deploy.py <folder> to delploy contents to dev.noBSstats.com/<folder>/

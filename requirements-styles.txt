@@ -1,0 +1,14 @@
+# To build the markdownpages and notebook sstyling projects (D2)
+# run the script    ./scripts/build.py <folder>
+# or altenratively  ./scripts/build.py <folder> --serve 
+jupyter-book==2.1.7
+nbformat==5.11.1
+numpy==2.3.5
+scipy==1.17.0
+pandas==2.2.3
+matplotlib==3.10.8
+seaborn==0.13.2
+
+# Optional notebook editor; not needed for the website preview or HTML build.
+jupyterlab==4.5.6
+ipykernel==7.4.0
