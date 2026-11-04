@@ -90,7 +90,7 @@ def main():
     elif os.path.isfile(myst_file):
         deploy_type = "styles"
         local = os.path.join(directory, "_build", "html")
-        builder = "build.py"
+        builder = "buildstyles.py"
     else:
         raise ValueError("Didn't find neither hoempageassets/ nor myst.yml so qitting...")
     print("Deploy type", deploy_type)

@@ -1,22 +1,63 @@
 # Jupyter Book Styles Sample
 
 
-## Dev workflow
+This folder contains a sample **Jupyter Book 2** project with custom styles definitions.
 
-1. Start the live preview in any styles folder containing `myst.yml`:
-   ```bash
-   cd sample
-   jupyter book start
+
+```text
+  sample/
+    myst.yml
+    assets/
+    theme/
+      custom.css
+      README.md
+    content/
+      index.md
+      markdownpage.md
+      notebook.ipynb
+    _build/
+```
+
+
+
+
+### Dev workflow for deliverable 2
+
+To work on the Jupyter Book 2 in the `sample/` folder,
+you need to:
+
+
+1. Open a new command prompt
+   and navigate to the project root folder using `cd` commands.
+   For example,
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\c`
+   you need to use the following commands
+   ```cmd
+   cd Projects
+   cd noBSstatsdev
    ```
 
-2. Click on the printed URL, usually http://localhost:3000.
+2. Activate the Python virtual environment:
+   ```cmd
+   .venv\Scripts\activate.bat
+   python -m pip install -r requirements-styles.txt
+   ```
 
-3. Open the file `sample/theme/custom.css` to edit the custom styles
+3. Run local dev server
+   ```cmd
+    python scripts/buildstyles.py sample --serve
+    ```
+    This script builds the Jupyter book in `sample` then serves
+    the generated HTML locally at `http://127.0.0.1:8000/sample/`.
+    To stop the preview sever use `Ctrl+C`.
+
+
+4. Open the file `sample/theme/custom.css` to edit the custom styles
    for the `sample` styles folder.
    The site should update automatically for each change you make to the .css file.
    Hard-refresh if your browser retains old CSS (CTRL + SHIFT + R).
 
-4. Stop the dev server with `Ctrl+C`. 
+
 
 
 
@@ -44,14 +85,13 @@
 
 
 
-
 ## Build static HTML website
 
 To "package" the Jupyter book in the folder `sample`
 as a static HTML website, run these command in the repository root:
 
 ```bash
-python scripts/build.py sample
+python scripts/buildstyles.py sample
 ```
 
 This will run the Jupyter book `build --html` command with:
@@ -60,35 +100,9 @@ This will run the Jupyter book `build --html` command with:
 - the environment variable `BASE_URL=/sample` set
   (which is required for the static site content to be hosted as the subfolder `/sample` on the web server)
 
-More generally, you can use  `python scripts/build.py <folder>`
+More generally, you can use  `python scripts/buildstyles.py <folder>`
 to build the Jupuyter Book project in the folder `<folder>`.
 
-
-
-
-
-### Build and preview the static HTML website 
-
-To inspect the results of the static build in `sample/_build/html` run:
-
-```bash
-python scripts/build.py sample --serve
-```
-
-The script builds the Jupyter book in `sample` then serves
-the generated HTML locally at `http://127.0.0.1:8000/sample/`.
-To stop the preview sever use `Ctrl+C`.
-
-
-
-## Copy a book to start a new version
-
-Copy the complete `sample/` folder to a new direct subfolder.
-e.g. copy `sample/` to `styles-v2/` 
-
-The new folder `styles-v2/` will contain independent copies of the configuration,
-stylesheet, images, and content. Edit those copies without changing the original `sample/`.
-For example, change the color palette in `styles-v2/theme/custom.css`.
 
 
 
@@ -99,7 +113,7 @@ For example, change the color palette in `styles-v2/theme/custom.css`.
 To build and deploy the built HTML from the `sample` Jupyter Book, use:
 
 ```bash
-python scripts/build.py sample
+python scripts/buildstyles.py sample
 python scripts/deploy.py sample
 ```
 
@@ -109,15 +123,31 @@ at `https://dev.noBSstats.com/sample/`.
 
 Run the same command again to upload changes. 
 
-Build and deploy the version in `<folder>` by running:
+
+
+
+## Copy the sample folder to start a new version
+
+Copy the complete `sample/` folder to a new direct subfolder.
+e.g. copy `sample/` to `styles-v2/` and work on the copy.
+
+- The new folder `styles-v2/` will contain independent copies of the configuration,
+  stylesheet, images, and content. Edit those copies without changing the original `sample/`.
+  For example, change the colour palette in `styles-v2/theme/custom.css`.
+- The idea is that you will create multiple copies of this book folder to work on the styles,
+  e.g. `styles-v1`,  `styles-v2`, `styles-v3`, etc., until we get to  `styles-final`.
+- The markdown file and notebook in `content/` and images in `assets/` can stay the same
+  across different styles versions, but feel free to modify the files in `content/` as you wish.
+
+Build and deploy the version in `styles-v2` by running:
 
 ```bash
-python scripts/build.py <folder>
-python scripts/deploy.py <folder>
+python scripts/buildstyles.py styles-v2
+python scripts/deploy.py styles-v2
 ```
 
 This may take up to five minutes because there are thousands of files.
-View the results at `https://dev.noBSstats.com/<folder>/`.
+View the results at `https://dev.noBSstats.com/styles-v2/`.
 
 
 

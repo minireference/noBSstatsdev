@@ -20,7 +20,8 @@ homepage/
 ```
 
 
-- The main file is `templates/index.html` and it includes other HTML fragments
+- The main file is `templates/index.html`;
+  it includes other HTML fragments from the `templates/` folder.
 - You can edit each fragment independently.
 - Stylesheet is in `homepageassets/styles.css`.
 
@@ -28,10 +29,7 @@ homepage/
 
 ## Build and preview
 
-From the repository root, activate your Python environment and install the
-root requirements. If you are adding these files to an older checkout,
-install Jinja with `python -m pip install Jinja2` and add it to the root
-`requirements.txt`. Add `dist/` to the root `.gitignore` as well.
+From the repository root, then run:
 
 ```bash
 python scripts/buildhomepage.py homepage
@@ -50,7 +48,7 @@ The builder overwrites matching output files and copies nested assets.
 
 
 
-## Dev server with live reload
+## Local dev server with live reload
 
 To run a live-reloading dev server, use the command:
 
@@ -64,18 +62,6 @@ This will watches the sources and refresh the browser on change.
 
 
 
-
-## Start another version of the homepage
-
-Copy the source folder from the repository root, skipping generated output:
-
-```bash
-python -c "import shutil; shutil.copytree('homepage', 'homepage-v2', ignore=shutil.ignore_patterns('dist'))"
-python scripts/buildhomepage.py homepage-v2
-python ./scripts/buildhomepage.py homepage-v2 --serve
-```
-
-Edit its templates and stylesheet independently.
 
 
 
@@ -92,10 +78,23 @@ The deployment script will take the contents of `homepage/dist/`
 and upload it to `/var/www/html/homepage/`,
 which corresponds to the URL: https://dev.noBSstats.com/homepage/ 
 
-Use `scripts/deploy.py` to deploy any other folder.
-For example, run `./scripts/deploy.py homepage-v2`
+
+
+
+## Start another version of the homepage
+
+
+- Copy the folder `homepage` to a new folder, e.g. `homepage-v2`.
+- Edit the HTML template and stylesheets in the `homepage-v2/`
+- Run this command to build and serve the contents of the new folder:
+  ```cmd
+  python ./scripts/buildhomepage.py homepage-v2 --serve
+  ```
+
+When you want to share the code,
+run `python scripts/deploy.py homepage-v2`
 to upload the folder `homepage-v2` to `/var/www/html/homepage-v2/`
-which can be viewed online at:  https://dev.nobsstats.com/homepage-v2/ .
+which can be viewed online at:  https://dev.nobsstats.com/homepage-v2/
 
 
 

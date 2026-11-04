@@ -1,5 +1,4 @@
 # Python Library dependencies.
-# Python 3.12 recommended
 
 # To build homepage folders (D1)
 # run the script ./scripts/buildhomepage.py <folder>

@@ -12,21 +12,177 @@ to facilitate the delivery of the two deliverables for the project:
 
 
 
+## 0. Setting up your local dev environment (Windows)
+
+
+### Step 0.0: Open a command line prompt
+
+- Click the start menu and start typing `cmd` on the keyboard.
+- Run `Command Prompt` to open the command line interface:
+  this is a text interface for running programs on your computer.
+  You type in short input text commands here and press ENTER to run them,
+  then output of the command is displayed below as text.
+  For example, type in the commands `dir`
+  to see the contents of your home directory.
+- We'll learn about other commands below.
+  I know this looks complicated, but don't worry, you can do this!
+
+
+
+### Step 0.1: Install SSH client
+
+SSH allows you to connect and control remote servers.
+You can enable SSH from Windows Settings using the following steps:
+
+1. Open **Settings** (Press `Win + I`).
+2. Navigate to **Apps** \> **Optional features** (On Windows 11, it may be under **System** \> **Optional features**).
+3. Look through the list of **Installed features**. If **OpenSSH Client** is already there, you are good to go.
+4. If it isn't listed, click **View features** (or **Add a feature**).
+5. Type **OpenSSH Client** into the search bar, check its box, and click **Install**.
+
+
+### Step 0.2: Install a Git client
+
+- Option 1: use GitHub Desktop GUI app.  
+  Download and install from https://github.com/apps/desktop
+- Option 2: use git on the command line.  
+  Download and install from https://git-scm.com/install/windows
+
+
+### Step 0.3: Download and install Python
+
+- Download Python 3.14 from
+  https://www.python.org/downloads/release/python-31410/
+
+
+### Step 0.4: Download and install Node.js
+
+- Download from https://nodejs.org/en/download
+  Use the installer from the bottom of the page below "Or get a prebuilt Node.js for Windows..."	
+
+
+### Checks
+
+At this point you should have SSH, Git, Python, and Node.js installed on your machine.
+You can check the above installation steps worked by opening a new command prompt
+and typing the following commands (one line at a time),
+which will print the installed versions:
+
+```cmd
+ssh -V
+python --version
+node --version
+npm --version
+```
+
+We don't need any specific version to proceed.
+We're just checking the programs `ssh`, `git`, `python`, `node`
+are all available to run on the command line.
+
+
+
+
+
+## 1. Clone repo and check prerequisites
+
+The next step is to **clone** the `noBSstatsdev` code repository
+which lives at https://github.com/minireference/noBSstatsdev on GitHub.
+Cloning is fancy tech jargon for making a local copy of the remote repository,
+while keeping a link to where the code came from so you can push changes back upstream.
+
+- Option 1: use GitHub Desktop GUI app to clone the repo to your computer.
+  Choose a local location that doesn't have slashes or spaces.
+  - Recommended: directly in your home folder `C:\Users\<your_name>`
+    or a subfolder `C:\Users\<your_name>\Projects`.
+  
+- Option 2: use git on the command line to clone the repo.
+  - Open a new command prompt
+  - Optionally use `cd` navigate to the directory when you want to work in.
+    For example, `cd Projects` to go inside the `C:\Users\<your_name>\Projects` folder.
+  - Run the git clone command as follows:
+    ```cmd
+    git clone https://github.com/minireference/noBSstatsdev.git
+    ```
+
+### Checks
+
+At this point you should have the folder `noBSstatsdev` on your computer.
+Use the command line prompts to go inside the project folder and list its contents:
+
+```cmd
+cd noBSstatsdev
+dir
+```
+
+Open the graphical user interface (File Explorer) to view the contents as well.
+Use our favourite text editor (e.g. VS Code) to look around the `noBSstatsdev` folder.
+
+All the commands in this README assume that you are running them in a command line
+terminal inside the `noBSstatsdev` directory (the repository root).
+
+
+
+
+
+
+## 2. Install Python libraries in a virtual environment
+
+
+The next step is to create a Python "virtual environment" for the project,
+where we'll install all the libraries and tools we use for the project.
+
+Use the command line to navigate to the `noBSstatsdev` directory then run:
+
+
+### Windows command prompt
+
+Run these commands line-by-line on the command prompt:
+
+```cmd
+python -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install -r requirements.txt
+```
+
+You'll need to run the command `.venv\Scripts\activate.bat` every time you open a new commend line 
+to activate the environment again whenever you open a new terminal.
+
+
+### macOS / Linux
+
+Run these commands line-by-line in a terminal:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+You'll need to run the command `source .venv/bin/activate` whenever you open a new terminal
+to activate the environment.
+
+
+
+
+
+
+
+
 ## Sample content
 
-The folders `homepage` and `sample` in the repo serve as the definitions of the "shape"
+The folders `homepage` and `sample` in the repo to define of the "shape"
 of the deliverables D1 and D2 I expect by the end of the project.
 
 
-### Homepage
+### Homepage starter code
 
 The folder `homepage/` contains starter code for creating a static
 landing page that will live at https://noBSstats.com/ in prod.
 
 The sample code uses the Jinja templates to build `homepage/dist/index.html`
-from the template `homepage/templates/index.html`, which in turn includes
-the HTML fragments taken from `homepage/templates/`.
-The source stylesheet file is `homepage/homepageassets/styles.css`
+from the template `homepage/templates/index.html`, which includes
+HTML fragments taken from the `homepage/templates/` directory.
+The source stylesheet file `homepage/homepageassets/styles.css`
 gets copied to `homepage/dist/homepageassets/styles.css`
 along with any other files in the `homepageassets/` folder.
 
@@ -34,14 +190,14 @@ along with any other files in the `homepageassets/` folder.
 ```text
   homepage/
     templates/
-      index.html             # main file
-      header.html
-      footer.html
+      index.html             # main file that includes other files
+      header.html            # homepage header section
+      footer.html            # homepage footer section
       ...
-    homepageassets/
-      styles.css
+    homepageassets/          # folder for stylesheets, js scripts, and images
+      styles.css             # stylesheet used by index.html
     README.md
-    dist/                    # generated; ignored by Git
+    dist/                    # build outputs that get uploaded to the server
 ```
 
 
@@ -58,46 +214,28 @@ The idea is that you will develop different versions of the homepage in
 separate folders, e.g., `homepage-v2`,  `homepage-v3`, etc., until we get to  `homepage-final`.
 
 
+### Scripts
+
+The folder `scripts/` contains scripts to help you work with code in the `homepage/`
+and other folders `homepage-v2`,  `homepage-v3`, etc.
+
+- Running the script `scripts/buildhomepage.py <folder>`
+  will generate `<folder>/dist/index.html` from `<folder>/templates/index.html`.
+  See section **Build homepage sample** below for the details.
+
+- You can then use the script `scripts/deploy.py <folder>` to uploads the local contents
+  of `<folder>/dist/` to the online server,
+  so that you can view it at the URL `https://dev.noBSstats.com/<folder>/`.
+  See section **Deploy a local folder to the web server** below for the details.
+
+
 
 ### Styles sample
 
-The folder `sample/` contains a sample **Jupyter Book** project with custom styles definitions.
+The folder `sample/` contains a sample **Jupyter Book 2** project with custom styles definitions.
+This is your starter code for Deliverable 2, which we'll discuss starting Week 3 of the project.
 
-```text
-  sample/
-    myst.yml
-    assets/
-    theme/
-      custom.css
-      README.md
-    content/
-      index.md
-      markdownpage.md
-      notebook.ipynb
-    _build/
-```
-
-Each styles subfolder is independent, with its own `myst.yml` and `theme/custom.css`.
-The idea is that you will create multiple copies of this book folder to work on the styles,
-e.g. `styles-v1`,  `styles-v2`, `styles-v3`, etc., until we get to  `styles-final`.
-The markdown file and notebook in `content/` and images in `assets/` can stay the same
-across different styles versions, but feel free to modify the files in `content/` as you wish.
-
-
-
-
-## Scripts
-
-The folder `scripts/` contains shared scripts to build `homepage` and `styles` folders.
-
-```text
-  scripts/
-    buildhomepage.py  # generate <folder>/dist/index.html homepage from <folder>/templates/index.html
-    build.py          # generate <folder>/_build/html/index.html  from a book folder
-    deploy.py
-```
-
-The script `deploy.py` uploads the local `<folder>` to the online server at the URL `https://dev.noBSstats.com/<folder>/`
+The relevant info is in [`sample/README.md`](./sample/README.md).
 
 
 
@@ -106,73 +244,136 @@ The script `deploy.py` uploads the local `<folder>` to the online server at the 
 
 
 
+## Build homepage sample
+
+The source files `homepage/templates/` cannot be viewed directly in the browser directly
+since they are separate fragments and need to be "assembled" to form the complete web page.
+This process is called a "build" and performed by the script `scripts/buildhomepage.py`.
+ 
+Each time you want to work on the `homepage`, follow these steps:
+
+1. Open a new command prompt
+   and navigate to the project root folder using `cd` commands.
+   For example,
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\c`
+   you need to use the following commands
+   ```cmd
+   cd Projects
+   cd noBSstatsdev
+   ```
+
+2. Activate the Python virtual environment:
+   ```cmd
+   .venv\Scripts\activate.bat
+   ```
+
+3. Run the command to build the webpage and start the dev server:
+   ```cmd
+   python scripts/buildhomepage.py homepage --serve
+   ```
+   This command serves the generated HTML locally at `http://127.0.0.1:8000/`.
+   Click on the link displayed: `http://127.0.0.1:8000/`.
+   To stop the dev server, use `Ctrl+C` in the command prompt.
 
 
-## 1. Install prerequisites
-
-After this project has been uploaded to GitHub, clone it with:
-
-```bash
-git clone https://github.com/minireference/noBSstatsdev.git
-cd noBSstatsdev
-```
-
-Alternatively, extract the ZIP and open a terminal in its `noBSstatsdev/`
-directory. The commands below assume that directory is the repository root.
-
-Install **Python 3.12**, **Node.js 24 LTS** (including npm), and Git if you
-use the clone command. Deployment uses the Python package Paramiko,
-included in `requirements.txt`, and a server with SSH/SFTP enabled.
-No local `ssh` or `scp` program is needed. No LaTeX installation is
-required for the website.
-
-Check the installed versions:
-
-```bash
-python --version
-node --version
-npm --version
-```
-
-On macOS/Linux, Python may be named `python3` before you activate the
-environment below.
-
-
-
-
-
-
-
-
-## 2. Create the Python environment
-
-Create one environment at the repository root, not one inside each book.
+See [`homepage/README.md`](./homepage/README.md) for more info.
 
 
 
-### macOS / Linux
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
 
 
-### Windows PowerShell
+## Deployment
 
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
+The webpage in `homepage/dist/index.html` lives only on your machine,
+so there is not way for others to see it.
+If we copy the contents of `homepage/dist/`
+to the web server `dev.noBSstats.com`,
+we can make the page publicly viewable at `https://dev.noBSstats.com/homepage/`.
+Copying the local folder to a remote server is called "deploying" in web dev jargon.
 
-If activation is blocked, call the environment's executables directly,
-for example `.\.venv\Scripts\python.exe scripts/build.py sample`.
+The script `scripts/deploy.py` automates this upload process,
+as described below, but first we need to do some crypto....
 
-Activate the environment again whenever you open a new terminal.
+
+
+### Generate SSH keypair
+
+In order to connect to the server,
+you need to create SSH keys that you'll use authenticate to the server.
+
+1. Open a new command prompt
+   and navigate to the `credentials` directory inside the project root folder
+   using `cd` commands.
+   For example,
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\noBSstatsdev`
+   you need to use the following commands:
+   ```cmd
+   cd Projects
+   cd noBSstatsdev
+   cd credentials
+   ```
+
+2. Generate an SSH key pair using the commands
+   ```cmd
+   ssh-keygen -f admin_key
+   ```
+   This will command will create two files:
+   the private key `credentials/admin_key`,
+   and the public key `credentials/admin_key.pub`.
+
+3. Send the public key to Ivan so he can add it to
+   the file `/home/admin/.ssh/authorized_keys` on the remote server.
+   The idea behind SSH key authentication
+   is that server lets in anyone who possesses a private key
+   matching one of the authorized public keys.
+
+
+
+
+#### Deploy a local folder to the web server
+
+The script `scripts/deploy.py` deploys a local HTML build folder
+(either from a homepage or a styles deliverable)
+to the dev web server at https://dev.noBSstats.com
+
+To build and deploy contents of the `homepage` folder:
+
+1. Open a new command prompt 
+   and navigate to the project root folder using `cd` commands.
+   For example,
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\c`
+   you need to use the following commands
+   ```cmd
+   cd Projects
+   cd noBSstatsdev
+   ```
+
+2. Build the homepage 
+   ```cmd
+   python scripts/buildhomepage.py homepage
+   ```
+
+3. Run the deploy script:
+   ```cmd
+   python scripts/deploy.py homepage
+   ```
+   This will copy the contents of `homepage/dist/` to 
+   `https://dev.noBSstats.com/homepage/`.
+   On the first connection to an unknown server, the script will ask you to type `yes`
+   to save the server key to `credentials/known_hosts`.
+   Subsequent runs check the server key is the same,
+   so you know you're connecting to the same server as on the first connection.
+
+
+You can now view the uploaded HTML at https://dev.noBSstats.com/homepage/ 
+
+
+You can use the deploy script to deploy other folders too.
+To deploy the local folder `<folder>`, use the command
+`python scripts/deploy.py <folder>`,
+which will upload the HTML build content from the local `<folder>`
+so that it gets served online at the public URL `https://dev.noBSstats.com/<folder>/`.
+
 
 
 
@@ -184,118 +385,21 @@ Activate the environment again whenever you open a new terminal.
 
 We'll use this code repo as a shared workspace for developing several versions
 of the homepage noBSstats.com and the styles for the content pages.
-- Use subfolders `<folder>` to store different version of the deliverables
+- Use subfolders `<folder>` to store different version of the deliverable 1
   e.g. `homepage-v2`,  `homepage-v3`, etc., until  `homepage-final`,
-  and  `styles-v1`,  `styles-v2`, `styles-v3`, until  `styles-final`.
-- Each folder is completely independent, but easily sharable:
+  and similarly for deliverable 2  `styles-v1`,  `styles-v2`, `styles-v3`, until  `styles-final`.
+- Each folder is completely independent, but easily sharable.
+  For example, if you're working on the folder `homepage-demo` and you want to share it
+  with the team, you can:
   - git add, commit, and push your local folder `homepage-demo` to the main repo 
   - git add, commit, and push local folder `homepage-demo` to a different branch, then open a pull request to the main branch
-  - build your local folder `homepage-demo` and upload it to `https://dev.noBSstats.com/<folder>/`, then share this URL
-
-
-
-## Build homepage sample  (D1 example)
-
-From the repository root, with the Python environment activated:
-
-```bash
-python scripts/buildhomepage.py homepage
-python -m http.server 8000 --directory homepage/dist
-```
-
-The script builds the homepage in folder `homepage/` then
-the second command serves the generated HTML locally at `http://127.0.0.1:8000/`.
-Open `http://localhost:8000/` in your browser.
-To stop the server, use `Ctrl+C`.
-
-See `homepage/README.md` for more info.
-
-
-
-
-## Build and run the Jupyter Book Styles Sample  (D2 example)
-
-
-To view the Jupyter Book sample project with custom styles,
-run the command:
-
-```bash
-python scripts/build.py sample --serve
-```
-
-
-This script builds the jupyter book in folder `sample/` and outputs
-the static site to `sample/_build/html/`,
-serves the generated HTML locally at `http://127.0.0.1:8000/sample/`.
-Open `http://127.0.0.1:8000/sample/` in your browser.
-To stop the server, use `Ctrl+C`.
-
-See `sample/README.md` for more info.
-
-
-
-
-
-
-
-## Deployment
-
-The script `scripts/deploy.py` allows you to deploy a local HTML build folder
-(either from a homepage or a styles deliverable)
-to the dev web server at https://dev.noBSstats.com
-
-To deploy the local folder `<folder>`, use the command:
-
-```bash
-python scripts/deploy.py <folder>
-```
-
-This will upload the HTML build content from the local `<folder>`
-so that it gets served online at the public URL `https://dev.noBSstats.com/<folder>/`
-
-
-The following constants must be set at the top of the script:
-
-```python
-SSH_HOST = "dev.noBSstats.com"
-SSH_USER = "admin"
-SSH_PORT = 22
-SSH_PRIVATE_KEY = "credentials/admin_key"  # Private key, not id_rsa.pub.
-SSH_KNOWN_HOSTS = "credentials/known_hosts"
-```
-
-You may need to edit `SSH_PRIVATE_KEY` if the SSH key is called something else,
-e.g. use `SSH_PRIVATE_KEY = "credentials/ivan_key"`
-to use the private key `credentials/ivan_key` for SSH authentication to the server.
-
-```text
-  credentials/
-    admin_key                   # example private key
-    admin_key.pub               # matching public key
-    known_hosts                 # saved server keys
-```
-
-
-Note: for SSH key authentication to work, the contents of `credentials/ivan_key.pub`
-must appear in the file `/home/admin/.ssh/authorized_keys` on the remote server.
-On the first connection to an unknown server, the script will ask you to type `yes`
-to save the server key to `credentials/known_hosts`. Subsequent runs check the server key
-is the same, so you know you're connecting to the same server as on the first connection.
- 
-
-
-
-
-
-
+  - build your local folder `homepage-demo` and upload it to `https://dev.noBSstats.com/homepage-demo/`, then share this URL
 
 
 
 
 ## Links
 
-- Production website: https://noBSstats.com/
-- Production website source repo: https://github.com/minireference/noBSstats
 - Dev wesbite: https://dev.noBSstats.com/
   - See https://dev.noBSstats.com/homepage/ for sample homepage
   - See https://dev.noBSstats.com/sample/ for sample styles
