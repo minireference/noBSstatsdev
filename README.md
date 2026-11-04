@@ -12,10 +12,10 @@ to facilitate the delivery of the two deliverables for the project:
 
 
 
-## 0. Setting up your local dev environment (Windows)
+## Setting up your local dev environment on Windows
 
 
-### Step 0.0: Open a command line prompt
+### Step 1: Open a command line prompt
 
 - Click the start menu and start typing `cmd` on the keyboard.
 - Run `Command Prompt` to open the command line interface:
@@ -29,19 +29,26 @@ to facilitate the delivery of the two deliverables for the project:
 
 
 
-### Step 0.1: Install SSH client
+### Step 2: Check that SSH client is installed.
 
-SSH allows you to connect and control remote servers.
-You can enable SSH from Windows Settings using the following steps:
+SSH client is a program that allows you to connect and control remote servers.
+Windows comes with a build it SSH client as an "Optional feature."
+
+
+Check that OpenSSH Client is available in Windows Settings:
 
 1. Open **Settings** (Press `Win + I`).
-2. Navigate to **Apps** \> **Optional features** (On Windows 11, it may be under **System** \> **Optional features**).
-3. Look through the list of **Installed features**. If **OpenSSH Client** is already there, you are good to go.
-4. If it isn't listed, click **View features** (or **Add a feature**).
-5. Type **OpenSSH Client** into the search bar, check its box, and click **Install**.
+2. Navigate to **System** \> **Optional features** > **View features**.
+3. Search for ssh in the list. If **OpenSSH Client** is already there, you are good to go.
 
 
-### Step 0.2: Install a Git client
+If it's not enabled, you can enable SSH from  using the following steps:
+
+1. Click the **See available features** link.
+2. Search for **OpenSSH Client** and **Add** it.
+
+
+### Step 3: Install a Git client
 
 - Option 1: use GitHub Desktop GUI app.  
   Download and install from https://github.com/apps/desktop
@@ -52,16 +59,17 @@ We'll install both so you can start using GitHub Desktop GUI for the first two w
 then, optionally, learn to use the `git` on the command prompt later on.
 
 
-### Step 0.3: Download and install Python
+### Step 4: Download and install Python
 
 - Download Python 3.14 from
   https://www.python.org/downloads/release/python-31410/
 
 
-### Step 0.4: Download and install Node.js
+### Step 5: Download and install Node.js
 
 - Download from https://nodejs.org/en/download
   Use the installer from the bottom of the page below "Or get a prebuilt Node.js for Windows..."	
+
 
 
 ### Checks
