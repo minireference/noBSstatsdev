@@ -100,7 +100,7 @@ while keeping a link to where the code came from so you can push changes back up
   
 - Option 2: use git on the command line to clone the repo.
   - Open a new command prompt
-  - Optionally use `cd` navigate to the directory when you want to work in.
+  - Optionally use `cd` to navigate to the directory that you want to work in.
     For example, `cd Projects` to go inside the `C:\Users\<your_name>\Projects` folder.
   - Run the git clone command as follows:
     ```cmd
@@ -147,8 +147,8 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-You'll need to run the command `.venv\Scripts\activate.bat` every time you open a new commend line 
-to activate the environment again whenever you open a new terminal.
+You'll need to run the command `.venv\Scripts\activate.bat` 
+every time you open a new command prompt to activate the environment.
 
 
 ### macOS / Linux
@@ -258,7 +258,7 @@ Each time you want to work on the `homepage`, follow these steps:
 1. Open a new command prompt
    and navigate to the project root folder using `cd` commands.
    For example,
-   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\c`
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\noBSstatsdev`
    you need to use the following commands
    ```cmd
    cd Projects

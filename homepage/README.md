@@ -3,7 +3,7 @@
 This folder contains starter code for a static homepage for the site.
 Use the script `scripts/buildhomepage.py` to build the page
 from the page components in the `templates/` directory,
-and outputs the built HTML + assets to the `dist/` directory.
+and output the built HTML + assets to the `dist/` directory.
 
 
 ```text
@@ -56,7 +56,7 @@ To run a live-reloading dev server, use the command:
 python ./scripts/buildhomepage.py homepage --serve
 ```
 
-This watches the sources and refresh the browser on change.
+This watches the sources and refreshes the browser on change.
 
 
 

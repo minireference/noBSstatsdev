@@ -1,4 +1,4 @@
-# To build the markdownpages and notebook sstyling projects (D2)
+# To build the markdownpages and notebook sytles projects (D2)
 # run the script    ./scripts/buildstyles.py <folder>
 # or alternatively  ./scripts/buildstyles.py <folder> --serve 
 jupyter-book==2.1.7

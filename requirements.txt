@@ -8,5 +8,5 @@ livereload==2.7.1
 
 
 # Needed for deploy pages to the web server
-# run ./scripts/deploy.py <folder> to delploy contents to dev.noBSstats.com/<folder>/
+# run ./scripts/deploy.py <folder> to deploy contents to dev.noBSstats.com/<folder>/
 paramiko==5.1.0

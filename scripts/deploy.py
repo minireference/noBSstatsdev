@@ -98,7 +98,7 @@ def main():
         local = os.path.join(directory, "_build", "html")
         builder = "buildstyles.py"
     else:
-        raise ValueError("Didn't find neither homepageassets/ nor myst.yml so quitting...")
+        raise ValueError("Found neither homepageassets/ nor myst.yml so quitting...")
     print("Deploy type", deploy_type)
 
     # Check that the local folder we want to deploy contains an index.html

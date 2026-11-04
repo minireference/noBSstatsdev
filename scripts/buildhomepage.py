@@ -3,7 +3,7 @@
 Build the homepage design: <folder>/templates/ + <folder>/homepageassets/  -->  <folder>/dist/
 - Run `./scripts/buildhomepage.py <folder>` to build homepage design in <folder>.
 - Run `./scripts/buildhomepage.py <folder> --serve` to run a livereload dev server
-  that watches the sources and refresh the browser on change.
+  that watches the sources and refreshes the browser on change.
 """
 
 import argparse

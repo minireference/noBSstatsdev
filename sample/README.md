@@ -30,7 +30,7 @@ you need to:
 1. Open a new command prompt
    and navigate to the project root folder using `cd` commands.
    For example,
-   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\c`
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\noBSstatsdev`
    you need to use the following commands
    ```cmd
    cd Projects
