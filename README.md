@@ -1,6 +1,6 @@
 # noBSstatsdev
 
-Hello World :)
+Hello World :)  Hi!
 
 This is the code repo for the Group 882 WE Accelerate internship project,
 which is to create a website for the book: **No Bullshit Guide to Statistics**.
