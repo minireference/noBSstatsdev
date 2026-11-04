@@ -42,17 +42,22 @@ you need to:
    .venv\Scripts\activate.bat
    python -m pip install -r requirements-styles.txt
    ```
+   You only need to install the requirements the first time.
 
-3. Run local dev server
+3. Navigate to the folder containing the version you want to work on
    ```cmd
-    python scripts/buildstyles.py sample --serve
+   cd sample
+   ```   
+
+4. Start the Jupyter Book dev server
+   ```cmd
+    jupyter book start
     ```
-    This script builds the Jupyter book in `sample` then serves
-    the generated HTML locally at `http://127.0.0.1:8000/sample/`.
-    To stop the preview sever use `Ctrl+C`.
+    This will run the Jupyter Book project in the `sample` folder
+    and serve the generated HTML locally at `http://localhost:3000`.
+    To stop the preview server use `Ctrl+C`.
 
-
-4. Open the file `sample/theme/custom.css` to edit the custom styles
+5. Open the file `theme/custom.css` to edit the custom styles
    for the `sample` styles folder.
    The site should update automatically for each change you make to the .css file.
    Hard-refresh if your browser retains old CSS (CTRL + SHIFT + R).
@@ -88,7 +93,7 @@ you need to:
 ## Build static HTML website
 
 To "package" the Jupyter book in the folder `sample`
-as a static HTML website, run these command in the repository root:
+as a static HTML website, run this command in the repository root:
 
 ```bash
 python scripts/buildstyles.py sample
@@ -101,7 +106,7 @@ This will run the Jupyter book `build --html` command with:
   (which is required for the static site content to be hosted as the subfolder `/sample` on the web server)
 
 More generally, you can use  `python scripts/buildstyles.py <folder>`
-to build the Jupuyter Book project in the folder `<folder>`.
+to build the Jupyter Book project in the folder `<folder>`.
 
 
 

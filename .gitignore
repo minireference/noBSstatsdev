@@ -8,11 +8,12 @@ __pycache__/
 .DS_Store
 Thumbs.db
 node_modules/
+.vscode
 
 # SSH keys and saved server host keys
 credentials/
 
-# OPTIONALLY ignote homepage deliverables build directories
+# OPTIONALLY ignore homepage deliverables build directories
 # */dist/
 
 

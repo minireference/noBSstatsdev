@@ -27,7 +27,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERBOSE = False
 
 class ConfirmHostKey(paramiko.MissingHostKeyPolicy):
-    """Confirm and save a new server key, as an SSH client normally does."""
+    """
+    Confirm and save a new server key, as an SSH client normally does.
+    """
 
     def missing_host_key(self, client, hostname, key):
         print("Server:", hostname)
@@ -42,7 +44,9 @@ class ConfirmHostKey(paramiko.MissingHostKeyPolicy):
 
 
 def make_directory(sftp, path):
-    """Create a remote directory and any missing parents."""
+    """
+    Create a remote directory and any missing parents.
+    """
     try:
         sftp.stat(path)
     except FileNotFoundError:
@@ -51,7 +55,9 @@ def make_directory(sftp, path):
 
 
 def upload_directory(sftp, local, remote, deploy_type):
-    """Copy every file, including dotfiles and nested directories."""
+    """
+    Copy every file, including dot-files and nested directories.
+    """
     make_directory(sftp, remote)
     for name in sorted(os.listdir(local)):
         source = os.path.join(local, name)
@@ -77,7 +83,7 @@ def main():
     directory = os.path.join(ROOT, args.folder)
 
 
-    # Detmine what kind of deploy this is: homepage or styles
+    # Determine what kind of deploy this is: homepage or styles
     # and set `local` directory whose contents we want to deploy
     homepageassets_dir = os.path.join(directory, "homepageassets")
     dist_index_file = os.path.join(directory, "dist", "index.html")
@@ -92,7 +98,7 @@ def main():
         local = os.path.join(directory, "_build", "html")
         builder = "buildstyles.py"
     else:
-        raise ValueError("Didn't find neither hoempageassets/ nor myst.yml so qitting...")
+        raise ValueError("Didn't find neither homepageassets/ nor myst.yml so quitting...")
     print("Deploy type", deploy_type)
 
     # Check that the local folder we want to deploy contains an index.html
@@ -102,7 +108,7 @@ def main():
             + builder + " " + args.folder
         )
 
-    # Destination where we're uploaing to on the web server
+    # Destination where we're uploading to on the web server
     remote = posixpath.join(WEBROOT, args.folder)
 
     # Credentials we'll use to connect to the web server

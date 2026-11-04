@@ -22,7 +22,7 @@ to facilitate the delivery of the two deliverables for the project:
   this is a text interface for running programs on your computer.
   You type in short input text commands here and press ENTER to run them,
   then output of the command is displayed below as text.
-  For example, type in the commands `dir`
+  For example, type in the command `dir`
   to see the contents of your home directory.
 - We'll learn about other commands below.
   I know this looks complicated, but don't worry, you can do this!
@@ -48,6 +48,9 @@ You can enable SSH from Windows Settings using the following steps:
 - Option 2: use git on the command line.  
   Download and install from https://git-scm.com/install/windows
 
+We'll install both so you can start using GitHub Desktop GUI for the first two weeks,
+then, optionally, learn to use the `git` on the command prompt later on.
+
 
 ### Step 0.3: Download and install Python
 
@@ -70,9 +73,9 @@ which will print the installed versions:
 
 ```cmd
 ssh -V
+git --version
 python --version
 node --version
-npm --version
 ```
 
 We don't need any specific version to proceed.
@@ -91,7 +94,7 @@ Cloning is fancy tech jargon for making a local copy of the remote repository,
 while keeping a link to where the code came from so you can push changes back upstream.
 
 - Option 1: use GitHub Desktop GUI app to clone the repo to your computer.
-  Choose a local location that doesn't have slashes or spaces.
+  Choose a local location that doesn't have forward slashes or spaces.
   - Recommended: directly in your home folder `C:\Users\<your_name>`
     or a subfolder `C:\Users\<your_name>\Projects`.
   
@@ -170,7 +173,7 @@ to activate the environment.
 
 ## Sample content
 
-The folders `homepage` and `sample` in the repo to define of the "shape"
+The folders `homepage` and `sample` in the repo define the "shape"
 of the deliverables D1 and D2 I expect by the end of the project.
 
 
@@ -223,7 +226,7 @@ and other folders `homepage-v2`,  `homepage-v3`, etc.
   will generate `<folder>/dist/index.html` from `<folder>/templates/index.html`.
   See section **Build homepage sample** below for the details.
 
-- You can then use the script `scripts/deploy.py <folder>` to uploads the local contents
+- You can then use the script `scripts/deploy.py <folder>` to upload the local contents
   of `<folder>/dist/` to the online server,
   so that you can view it at the URL `https://dev.noBSstats.com/<folder>/`.
   See section **Deploy a local folder to the web server** below for the details.
@@ -246,7 +249,7 @@ The relevant info is in [`sample/README.md`](./sample/README.md).
 
 ## Build homepage sample
 
-The source files `homepage/templates/` cannot be viewed directly in the browser directly
+The source files `homepage/templates/` cannot be viewed directly in the browser
 since they are separate fragments and need to be "assembled" to form the complete web page.
 This process is called a "build" and performed by the script `scripts/buildhomepage.py`.
  
@@ -285,7 +288,7 @@ See [`homepage/README.md`](./homepage/README.md) for more info.
 ## Deployment
 
 The webpage in `homepage/dist/index.html` lives only on your machine,
-so there is not way for others to see it.
+so there is no way for others to see it.
 If we copy the contents of `homepage/dist/`
 to the web server `dev.noBSstats.com`,
 we can make the page publicly viewable at `https://dev.noBSstats.com/homepage/`.
@@ -299,7 +302,7 @@ as described below, but first we need to do some crypto....
 ### Generate SSH keypair
 
 In order to connect to the server,
-you need to create SSH keys that you'll use authenticate to the server.
+you need to create SSH keys that you'll use to authenticate to the server.
 
 1. Open a new command prompt
    and navigate to the `credentials` directory inside the project root folder
@@ -317,14 +320,14 @@ you need to create SSH keys that you'll use authenticate to the server.
    ```cmd
    ssh-keygen -f admin_key
    ```
-   This will command will create two files:
+   This command will create two files:
    the private key `credentials/admin_key`,
    and the public key `credentials/admin_key.pub`.
 
 3. Send the public key to Ivan so he can add it to
    the file `/home/admin/.ssh/authorized_keys` on the remote server.
    The idea behind SSH key authentication
-   is that server lets in anyone who possesses a private key
+   is that the server lets in anyone who possesses a private key
    matching one of the authorized public keys.
 
 
@@ -341,19 +344,24 @@ To build and deploy contents of the `homepage` folder:
 1. Open a new command prompt 
    and navigate to the project root folder using `cd` commands.
    For example,
-   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\c`
+   if you cloned the repo to the folder `C:\Users\<your_name>\Projects\noBSstatsdev`
    you need to use the following commands
    ```cmd
    cd Projects
    cd noBSstatsdev
    ```
 
-2. Build the homepage 
+2. Activate the Python virtual environment:
+   ```cmd
+   .venv\Scripts\activate.bat
+   ```
+
+3. Build the homepage 
    ```cmd
    python scripts/buildhomepage.py homepage
    ```
 
-3. Run the deploy script:
+4. Run the deploy script:
    ```cmd
    python scripts/deploy.py homepage
    ```
@@ -385,7 +393,7 @@ so that it gets served online at the public URL `https://dev.noBSstats.com/<fold
 
 We'll use this code repo as a shared workspace for developing several versions
 of the homepage noBSstats.com and the styles for the content pages.
-- Use subfolders `<folder>` to store different version of the deliverable 1
+- Use subfolders `<folder>` to store different versions of the Deliverable 1
   e.g. `homepage-v2`,  `homepage-v3`, etc., until  `homepage-final`,
   and similarly for deliverable 2  `styles-v1`,  `styles-v2`, `styles-v3`, until  `styles-final`.
 - Each folder is completely independent, but easily sharable.
@@ -400,7 +408,7 @@ of the homepage noBSstats.com and the styles for the content pages.
 
 ## Links
 
-- Dev wesbite: https://dev.noBSstats.com/
+- Dev website: https://dev.noBSstats.com/
   - See https://dev.noBSstats.com/homepage/ for sample homepage
   - See https://dev.noBSstats.com/sample/ for sample styles
 - Dev website source repo: https://github.com/minireference/noBSstatsdev

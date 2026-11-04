@@ -1,6 +1,6 @@
 # Homepage sample
 
-This folder contains an starter code for a static homepage for the site.
+This folder contains starter code for a static homepage for the site.
 Use the script `scripts/buildhomepage.py` to build the page
 from the page components in the `templates/` directory,
 and outputs the built HTML + assets to the `dist/` directory.
@@ -29,7 +29,7 @@ homepage/
 
 ## Build and preview
 
-From the repository root, then run:
+From the repository root, run:
 
 ```bash
 python scripts/buildhomepage.py homepage
@@ -39,7 +39,7 @@ python -m http.server 8000 --directory homepage/dist
 Open `http://localhost:8000/`. Stop the preview with Ctrl+C. After editing,
 rerun the build in another terminal and refresh the browser.
 
-The value of the variable `site_title` defiend in context dict
+The value of the variable `site_title` defined in context dict
 in  `buildhomepage.py` supplies `site_title` variable in templates.
 Missing template variables are set to produce build errors. 
 
@@ -56,7 +56,7 @@ To run a live-reloading dev server, use the command:
 python ./scripts/buildhomepage.py homepage --serve
 ```
 
-This will watches the sources and refresh the browser on change.
+This watches the sources and refresh the browser on change.
 
 
 
@@ -91,7 +91,7 @@ which corresponds to the URL: https://dev.noBSstats.com/homepage/
   python ./scripts/buildhomepage.py homepage-v2 --serve
   ```
 
-When you want to share the code,
+When you want to share the preview of the new page,
 run `python scripts/deploy.py homepage-v2`
 to upload the folder `homepage-v2` to `/var/www/html/homepage-v2/`
 which can be viewed online at:  https://dev.nobsstats.com/homepage-v2/
