@@ -10,6 +10,52 @@ to facilitate the delivery of the two deliverables for the project:
 - D2: styling for content pages like https://nobsstats.com/notebooks/discrete-random-vars/ (book-theme styles customization)
 
 
+## Daily driver commands
+
+This section contains are the commands you need to use on a daily basis when working on the 
+HTML and CSS files in the `homepage` folder.
+The commands assume the `noBSstatsdev` folder is located at `C:\Users\<your_name>\Projects\noBSstatsdev`.
+Change the first `cd` command to reflect a different location.
+
+
+### A. Run the local dev server
+
+```cmd
+cd Projects
+cd noBSstatsdev
+.venv\Scripts\activate.bat
+python scripts/buildhomepage.py homepage --serve
+```
+
+You can now see the combined and rendered contents of HTML locally at http://127.0.0.1:8000/.
+Use `Ctrl+C` in the command prompt to stop the dev server.
+
+
+
+### B. Upload local version to the server
+
+To build and deploy the contents of the folder `homepage` to the server:
+
+```cmd
+cd Projects
+cd noBSstatsdev
+.venv\Scripts\activate.bat
+python scripts/buildhomepage.py homepage
+python scripts/deploy.py homepage
+```
+
+This copies the contents of `homepage/dist/` to https://dev.noBSstats.com/homepage/
+which you can view online.
+
+Notes:
+- You an replace `homepage` in the above examples with any other folder name.
+- You must have completed the "Setting up your dev environment",
+  "1. Clone the code repository", and "2. Install Python libraries" below
+  before you can run the daily driver commands.
+
+
+
+
 
 ## Setting up your local dev environment on Windows
 
@@ -93,7 +139,7 @@ are all available to run on the command line.
 
 
 
-## 1. Clone repo and check prerequisites
+## 1. Clone the code repository
 
 The next step is to **clone** the `noBSstatsdev` code repository
 which lives at https://github.com/minireference/noBSstatsdev on GitHub.
