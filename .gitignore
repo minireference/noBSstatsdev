@@ -13,8 +13,8 @@ node_modules/
 # SSH keys and saved server host keys
 credentials/
 
-# OPTIONALLY ignore homepage deliverables build directories
-# */dist/
+# Ignore homepage deliverables build directories
+*/dist/
 
 
 
