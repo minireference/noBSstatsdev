@@ -29,6 +29,17 @@
 
 
 
+/* DESIGN ON MOBILE SPECIAL DIRECTIVES  */
+
+@media (max-width: 600px) {
+  .hero { padding-block: 4rem; }
+  .hero-description { font-size: 1.1rem; }
+}
+
+
+
+
+
 
 /* OLD BOOKS SECTION */
 .books { padding-block: 3rem 5rem; border-top: 1px solid var(--border); }
@@ -39,22 +50,26 @@
 .book h3 { max-width: 22ch; margin: 0.8rem 0 1rem; font-family: Georgia, "Times New Roman", serif; font-size: 2rem; line-height: 1.2; }
 .book p:last-child { margin-bottom: 0; color: var(--muted); }
 
-
-
-
-
-
-
-
-/* NEW FOOTER */
-#footer {
-  max-width: 1124px;
-  margin: auto;
-  padding: 80px 0;
-  border-block: 2px solid #999;
+@media (max-width: 600px) {
+  .book { padding: 1.5rem; }
+  .book h3 { font-size: 1.7rem; }
 }
 
-.footer-grid {
+
+
+
+
+
+/* HOMEAPGE FOOTER */
+
+#footer {
+  padding: 80px 0;
+  border-top: 2px solid #999;
+  width: min(var(--content-width), calc(100% - 3rem)); margin-inline: auto;
+  max-width: 1124px;
+}
+
+#footer .footer-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
@@ -66,7 +81,13 @@
 }
 
 #footer ul {
-  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+  list-style-type: none;
+  padding-left: 0rem;
+}
+
+#footer ul a {
+  text-decoration: none;
 }
 
 #footer .textbooks {
@@ -78,18 +99,22 @@
   gap: 0.5rem;
 }
 
+#footer form textarea {
+  height: 5rem;
+}
+
 #footer .copyright {
   margin: 6rem 0 0;
   text-align: center;
 }
 
-
+/* CHANGES FOR MOBILE */
 @media (max-width: 700px) {
   #footer {
-    padding: 40px 20px;
+    padding-top: 40px;
   }
 
-  .footer-grid {
+  #footer  .footer-grid {
     grid-template-columns: 1fr;
   }
 
@@ -101,12 +126,3 @@
 
 
 
-
-/* DESIGN ON MOBILE SPECIAL DIRECTIVES  */
-
-@media (max-width: 600px) {
-  .hero { padding-block: 4rem; }
-  .hero-description { font-size: 1.1rem; }
-  .book { padding: 1.5rem; }
-  .book h3 { font-size: 1.7rem; }
-}
