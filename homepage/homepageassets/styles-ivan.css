@@ -40,10 +40,63 @@
 .book p:last-child { margin-bottom: 0; color: var(--muted); }
 
 
-/* FOOTER */
 
-.site-footer { padding-block: 1.5rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
 
+
+
+
+
+/* NEW FOOTER */
+#footer {
+  max-width: 1124px;
+  margin: auto;
+  padding: 80px 0;
+  border-block: 2px solid #999;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+#footer h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+#footer ul {
+  padding-left: 1.2rem;
+}
+
+#footer .textbooks {
+  margin-top: 3rem;
+}
+
+#footer form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+#footer .copyright {
+  margin: 6rem 0 0;
+  text-align: center;
+}
+
+
+@media (max-width: 700px) {
+  #footer {
+    padding: 40px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #footer .copyright {
+    margin-top: 3rem;
+  }
+}
 
 
 
