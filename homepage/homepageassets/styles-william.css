@@ -1,0 +1,28 @@
+/* 
+    CSS STYLES WRITTEN BY WILLIAM
+*/
+
+
+/* HEADER */
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 1.25rem;
+}
+
+.site-header nav p a {
+  text-decoration: none;
+}
+
+.wordmark {
+  font-weight: 750;
+  font-size: 1.3rem;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
