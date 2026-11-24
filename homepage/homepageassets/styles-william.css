@@ -6,7 +6,6 @@
 /* HEADER */
 .site-header {
   border-bottom: 1px solid var(--border);
-  text-decoration: none; /* test modification */
 }
 
 .site-header nav {
@@ -19,6 +18,7 @@
 
 .site-header nav p a {
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .wordmark {
