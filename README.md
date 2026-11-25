@@ -1,6 +1,5 @@
 # noBSstatsdev
 
-
 This is the code repo for the Group 882 WE Accelerate internship project,
 which is to create a website for the book: **No Bullshit Guide to Statistics**.
 The repo contains sample content (`homepage` and `sample`) and scripts (`scripts`)
@@ -30,6 +29,7 @@ python scripts/buildhomepage.py homepage --serve
 You can now see the combined and rendered contents of HTML locally at http://127.0.0.1:8000/.
 Use `Ctrl+C` in the command prompt to stop the dev server.
 
+TOOD: show commands for macOS
 
 
 ### B. Upload local version to the server
