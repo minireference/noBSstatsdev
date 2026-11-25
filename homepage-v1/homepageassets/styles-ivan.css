@@ -1,0 +1,72 @@
+/* 
+    CSS STYLES WRITTEN BY IVAN
+*/
+
+
+
+/* HOMEPAGE FOOTER */
+
+#footer {
+  padding: 80px 0;
+  border-top: 2px solid #999;
+  width: min(var(--content-width), calc(100% - 3rem)); margin-inline: auto;
+  max-width: 1124px;
+}
+
+#footer .footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+#footer h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+#footer ul {
+  margin-top: 0.5rem;
+  list-style-type: none;
+  padding-left: 0rem;
+}
+
+#footer ul a {
+  text-decoration: none;
+}
+
+#footer .textbooks {
+  margin-top: 3rem;
+}
+
+#footer form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+#footer form textarea {
+  height: 5rem;
+}
+
+#footer .copyright {
+  margin: 6rem 0 0;
+  text-align: center;
+}
+
+/* CHANGES FOR MOBILE */
+@media (max-width: 700px) {
+  #footer {
+    padding-top: 40px;
+  }
+
+  #footer  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #footer .copyright {
+    margin-top: 3rem;
+  }
+}
+
+
+
+

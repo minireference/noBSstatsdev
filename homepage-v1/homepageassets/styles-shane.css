@@ -1,0 +1,141 @@
+/* 
+    CSS STYLES WRITTEN BY SHANE
+*/
+
+/* HERO SECTION */
+
+#hero_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  width: min(var(--content-width), calc(100% - 3rem));
+  margin-inline: auto;
+  padding: 4rem 0;
+}
+
+#hero_section h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+#hero_section .books {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  text-align: center;
+}
+
+#hero_section .books img {
+  max-width: 100%;
+}
+
+#hero_section .books a {
+  font-weight: bold;
+}
+
+#hero_section .bundle {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+  #hero_section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* WHY THIS BOOK */
+
+#why_this_book {
+  width: min(var(--content-width), calc(100% - 3rem));
+  margin-inline: auto;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+#why_this_book h2 {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+#why_this_book .features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 2rem;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  #why_this_book .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* BOOK PREVIEW */
+
+#book_preview {
+  width: min(var(--content-width), calc(100% - 3rem));
+  margin-inline: auto;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+#book_preview h2,
+#book_preview h3 {
+  text-transform: uppercase;
+}
+
+#book_preview h3 {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+#book_preview .books {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#book_preview .book {
+  border: 1px solid var(--border);
+  padding: 1rem;
+}
+
+#book_preview .book img {
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  #book_preview .books {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* VIDEO EXPLAINER */
+
+#video_explainer {
+  width: min(var(--content-width), calc(100% - 3rem));
+  margin-inline: auto;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+#video_explainer h2,
+#video_explainer h3 {
+  text-transform: uppercase;
+}
+
+#video_explainer h3 {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+#video_explainer img,
+#video_explainer iframe {
+  width: min(100%, 40rem);
+  aspect-ratio: 16 / 9;
+}
+
+
+
+
+
