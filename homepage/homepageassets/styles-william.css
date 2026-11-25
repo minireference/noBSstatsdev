@@ -18,6 +18,7 @@
 
 .site-header nav p a {
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .wordmark {

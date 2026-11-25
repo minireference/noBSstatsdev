@@ -3,25 +3,199 @@
 */
 
 
-#who_is_this_book_for {
-    background-color: #defaf8;
+/* WHO IS THIS BOOK FOR */
+ #who_is_this_book_for {
+      padding: 15px 0 140px;
+      margin: 0 auto;
+      width: min(var(--content-width), calc(100% - 3rem)); margin-inline: auto;
+    }
+
+#who_is_this_book_for .section-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 
+#who_is_this_book_for .section-header h2 {
+  margin: 0 0 2rem;
+}
+
+#who_is_this_book_for .section-header p {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+#who_is_this_book_for .columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+}
+
+
+#who_is_this_book_for .column {
+  padding: 1rem 0.7rem;
+  border-right: 1px solid #ddd;
+}
+
+#who_is_this_book_for .column:last-child {
+  border-right: none;
+}
+
+#who_is_this_book_for h3 {
+  font-size: 28px;
+  line-height: 1.3;
+  margin: 0.5rem 0;
+}
+
+#who_is_this_book_for .subtitle {
+  margin: 0 0 1.5rem;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+#who_is_this_book_for p {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+
+/* CHANGES FOR MOBILE */
+@media (max-width: 700px) {
+  #who_is_this_book_for .columns {
+    grid-template-columns: 1fr;
+
+  }
+  #who_is_this_book_for .column {
+    border-right: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* BUY NOW LINKS */
+#buy_now_links {
+     width: min(var(--content-width), calc(100% - 3rem)); margin-inline: auto;
+}
 
 #buy_now_links {
-    background-color: #defaf8;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+#buy_now_links .buying-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+#buy_now_links.buying-option {
+  padding: 15px;
+  border: 1px solid #333;
+}
+
+#buy_now_links img {
+  max-width: 100%;
+  height: 300px;
+  object-fit: contain;
+  margin: 20px auto;
+}
+
+#buy_now_links dl {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  text-align: left;
+}
+
+#buy_now_links dt,
+#buy_now_links dd {
+  margin: 4px 0;
+}
+
+#buy_now_links.buy-link {
+  display: block;
+  margin: 60px 0 25px;
+}
+
+@media (max-width: 768px) {
+#buy_now_links.buying-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 
 
 
+
+/* MAILING LIST */
 #mailing_list_signup {
-    background-color: #defaf8;
+  width: min(var(--content-width), calc(100% - 3rem)); margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  padding: 40px;
+}
+
+#mailing_list_signup img {
+  width: 60px;
+}
+
+#mailing_list_signup h2 {
+  text-align: center;
+}
+
+#mailing_list_signup .signup_fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#mailing_list_signup button {
+  margin-top: 20px;
 }
 
 
 
 #about_the_author {
-    background-color: #defaf8;
+   width: min(var(--content-width), calc(100% - 3rem)); margin-inline: auto;
+}
+#about_the_author {
+  padding: 30px;
+}
+
+#about_the_author .author-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+#about_the_author .author-bio {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+#about_the_author .author-description {
+  text-align: center;
+}
+
+#about_the_author .author-photo img {
+  width: 100%;
+  height: auto;
+}
+
+#about_the_author .author-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+#about_the_author .author-links > div {
+  padding: 15px;
 }
