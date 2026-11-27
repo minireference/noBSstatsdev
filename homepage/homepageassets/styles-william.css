@@ -11,6 +11,8 @@
 /* HEADER */
 .site-header {
   border-bottom: 1px solid var(--border);
+  background: #1c1a17;
+  color: #e9e3d8;
 }
 
 .site-header nav {
